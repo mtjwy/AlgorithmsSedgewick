@@ -1,6 +1,7 @@
 package chapter1_fundamentals.stack;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Stack supported by an resizing array. 
@@ -9,7 +10,7 @@ import java.util.Iterator;
  * 
  * @param <Item>
  */
-public class ResizingArrayStack<Item> implements Iterable<Item> {
+public class ResizingArrayStack<Item> implements Iterable<Item>, Stack<Item> {
 
 	private Item[] a;
 	private int N;
@@ -43,6 +44,10 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 	}
 
 	public Item pop() {
+		
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
 
 		Item item = a[--N];
 		a[N] = null;
@@ -51,6 +56,13 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 			resize(a.length / 2);
 		}
 		return item;
+	}
+	
+	public Item peek() {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		return a[N - 1];
 	}
 
 	@Override

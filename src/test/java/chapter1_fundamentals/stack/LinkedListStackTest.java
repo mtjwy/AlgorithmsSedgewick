@@ -1,11 +1,12 @@
 package chapter1_fundamentals.stack;
 
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class ResizingArrayStackTest {
-	
+public class LinkedListStackTest {
+
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 
@@ -13,13 +14,13 @@ public class ResizingArrayStackTest {
 
 	@Test
 	public void testStackSizePushPop() {	
-		ResizingArrayStack<Object> stack = new ResizingArrayStack<Object>();
+		LinkedListStack<Object> stack = new LinkedListStack<Object>();
 		stackTest.testStackSizePushPop(stack, exception);
 	}
 
 	@Test
 	public void testStackIterator() {
-		ResizingArrayStack<Integer> stack = new ResizingArrayStack<>();
+		LinkedListStack<Integer> stack = new LinkedListStack<>();
 
 		stackTest.testStackIterator(stack);
 	}
