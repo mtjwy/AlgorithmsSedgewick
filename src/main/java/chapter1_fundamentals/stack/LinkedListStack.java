@@ -11,11 +11,32 @@ public class LinkedListStack<Item> implements Iterable<Item>, Stack<Item> {
 	private class Node<Item> {
 		Item item;
 		Node<Item> next;
+		
+		Node() {
+			
+		}
+		
+		Node(Node<Item> x) {
+			item = x.item;
+			next = x.next;
+		}
 	}
 
 	public LinkedListStack() {
 		first = null;
 		N = 0;
+	}
+	
+	//make a copy 
+	public LinkedListStack(LinkedListStack<Item> s) {
+		
+		if (s.first != null) {
+			N = s.size();
+			first = new Node<Item>(s.first);
+			for(Node<Item> x = first; x.next != null; x = x.next) {
+				x.next = new Node<Item>(x.next);
+			}
+		}
 	}
 
 	public boolean isEmpty() {
