@@ -24,9 +24,9 @@ public abstract class BagTest {
 		}
 
 		// iterate bag and assert value 1 2 3 4
-		int i = 0;
+		int i = 4;
 		for (Integer v : bag) {
-			assertEquals(v, nums[i++]);
+			assertEquals(v, nums[--i]);
 		}
 
 	}

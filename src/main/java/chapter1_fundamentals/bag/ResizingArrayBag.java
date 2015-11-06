@@ -45,17 +45,17 @@ public class ResizingArrayBag<Item> implements Bag<Item> {
 	}
 
 	private class ArrayIterator implements Iterator<Item> {
-		private int i = 0;
+		private int i = N;
 
 		public boolean hasNext() {
-			return i < N;
+			return i > 0;
 		}
 
 		public Item next() {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
-			return a[i++];
+			return a[--i];
 		}
 	}
 
