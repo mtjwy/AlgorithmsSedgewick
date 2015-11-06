@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
  */
 
 
-public class ResizingArrayQueue<Item> implements Iterable<Item> {
+public class ResizingArrayQueue<Item> implements Queue<Item> {
 
 	//TODO how to make it thread save 
 	
