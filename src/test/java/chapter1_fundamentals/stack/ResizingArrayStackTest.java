@@ -1,27 +1,17 @@
 package chapter1_fundamentals.stack;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+public class ResizingArrayStackTest extends StackTest {
 
-public class ResizingArrayStackTest {
+	@Override
+	public Stack<Object> createObjectStack() {
+		return new ResizingArrayStack<Object>();
+	}
+
+	@Override
+	public Stack<Integer> createIntegerStack() {
+		return new ResizingArrayStack<Integer>();
+	}
 	
-	@Rule
-	public final ExpectedException exception = ExpectedException.none();
-
-	StackTest stackTest = new StackTest();
-
-	@Test
-	public void testStackSizePushPop() {	
-		ResizingArrayStack<Object> stack = new ResizingArrayStack<Object>();
-		stackTest.testStackSizePushPop(stack, exception);
-	}
-
-	@Test
-	public void testStackIterator() {
-		ResizingArrayStack<Integer> stack = new ResizingArrayStack<>();
-
-		stackTest.testStackIterator(stack);
-	}
+	
 
 }

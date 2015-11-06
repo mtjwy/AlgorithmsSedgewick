@@ -4,15 +4,24 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.NoSuchElementException;
 
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class StackTest {
+
+public abstract class StackTest {
 	
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
 	
-	public void testStackSizePushPop(Stack<Object> stack, 
-			ExpectedException exception) {//accept a empty stack
+	public abstract Stack<Object> createObjectStack();
+	public abstract Stack<Integer> createIntegerStack();
+	
+	@Test
+	public void testStackSizePushPop() {
 		
 		//Test that the size of empty Stack is 0.
+		Stack<Object> stack =  createObjectStack();
 		assertEquals(0, stack.size());
 
 		// Push an element onto the stack. Test that its size is now 1.
@@ -43,8 +52,10 @@ public class StackTest {
 		stack.pop();
 	}
 	
-	
-	public void testStackIterator(Stack<Integer> stack) {//accept a empty stack
+	@Test
+	public void testStackIterator() {
+		
+		Stack<Integer> stack = createIntegerStack(); 
 		//push 3 values onto stack 3 2 1
 		Integer[] arr = {3, 2, 1};
 		for(int i = 0; i < arr.length; i++) {
