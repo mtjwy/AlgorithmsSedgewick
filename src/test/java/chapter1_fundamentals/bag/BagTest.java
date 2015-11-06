@@ -1,6 +1,10 @@
 package chapter1_fundamentals.bag;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -23,10 +27,14 @@ public abstract class BagTest {
 			assertEquals(i + 1, bag.size());
 		}
 
-		// iterate bag and assert value 1 2 3 4
-		int i = 4;
+		// iterate bag and assert containing 1 2 3 4
+		Set<Integer> set = new HashSet<>();
 		for (Integer v : bag) {
-			assertEquals(v, nums[--i]);
+			set.add(v);
+		}
+		
+		for (int i = 0; i < nums.length; i++) {
+			assertTrue(set.contains(nums[i]));
 		}
 
 	}
